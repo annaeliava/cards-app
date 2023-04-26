@@ -1,0 +1,21 @@
+.container {
+    width: 100px;
+    height: 200px;
+}
+
+.title {
+    font-size: large;
+}
+
+.closeBtn,
+.likeBtn {
+    width: 50px;
+    height: 50px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.likeBtn {
+    color: 	#FF0000;
+}
