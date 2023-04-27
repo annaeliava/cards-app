@@ -31,12 +31,12 @@ export default function Card(props) {
                     src={data.image}
                     alt={data.title}
                     className={styles.img} />
-                <div className={styles.info}>{data.title}</div>
+                <div className={styles.title}>{data.title}</div>
                 <div className={styles.year}>{data.year}</div>
-                <div className={styles.creator}>{data.creator}</div>
-                <div className={styles.rating}>{data.rating}</div>
-                <div className={styles.runtime_in_minutes}>{data.runtime_in_minutes}</div>
-                <div className={styles.episodes}>{data.episodes}</div>
+                <div className={styles.creator}>Creator: {data.creator}</div>
+                <div className={styles.rating}>Rating: {data.rating}</div>
+                <div className={styles.runtime_in_minutes}>{data.runtime_in_minutes} minutes</div>
+                <div className={styles.episodes}>Episodes: {data.episodes}</div>
                 <button
                     className={styles.likeBtn}
                     onClick={handleLike}>

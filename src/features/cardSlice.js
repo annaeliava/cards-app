@@ -5,7 +5,6 @@ export const fetchData = createAsyncThunk(
     async () => {
         const response = await fetch('https://api.sampleapis.com/cartoons/cartoons2D');
         const data = await response.json();
-        console.log(data);
         return data;
     }
 );
