@@ -28,7 +28,7 @@ export default function Card(props) {
                     <CloseIcon />
                 </button>
                 <img
-                    src={data.image}
+                    src={data.image || 'https://i.pinimg.com/564x/49/50/e8/4950e8a46b46da3c50b024cafc316ae3.jpg'}
                     alt={data.title}
                     className={styles.img} />
                 <div className={styles.title}>{data.title}</div>
