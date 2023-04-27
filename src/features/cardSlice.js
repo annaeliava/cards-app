@@ -17,11 +17,15 @@ export const cardSlice = createSlice({
     },
     reducers: {
         toggleLike: (state, action) => {
-            const isLiked = state.cartoons.some(cartoon => cartoon.id === action.payload.id);
+            // const likedItem = state.cartoons.find(
+            //     (cartoon) => cartoon.id === action.payload.id
+            //   );
+            //   if (likedItem) {
+            //     likedItem.liked = action.payload.isLiked;
+            //   }
+            const isLiked = state.cartoons.find(cartoon => cartoon.id === action.payload.id);
             if(isLiked){
-                state = state.cartoons.filter(cartoon => cartoon.id !== action.payload.id);
-            } else {
-                state.cartoons.push(action.payload);
+                isLiked.liked = action.payload.isLiked;
             }
         },
         deleteCartoon: (state, action) => {

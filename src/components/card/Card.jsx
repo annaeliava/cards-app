@@ -9,10 +9,15 @@ import { toggleLike, deleteCartoon } from "../../features/cardSlice";
 export default function Card({ id, ...props }) {
     const dispatch = useDispatch();
     const [like, setLike] = useState(false);
+
+    const handleDislike = () => {
+        setLike(false);
+        dispatch(toggleLike({ id, isLiked: false }));
+    }
+
     const handleLike = () => {
-        setLike(!like);
-        dispatch(toggleLike());
-        console.log('check1')
+        setLike(true);
+        dispatch(toggleLike({ id, isLiked: true }));
     }
 
     const deleteCard = () => {
@@ -37,11 +42,21 @@ export default function Card({ id, ...props }) {
                 <div className={styles.rating}>Rating: {props.rating}</div>
                 <div className={styles.runtime_in_minutes}>{props.runtime_in_minutes} minutes</div>
                 <div className={styles.episodes}>Episodes: {props.episodes}</div>
-                <button
-                    className={styles.likeBtn}
-                    onClick={handleLike}>
-                    {like ? <FavoriteIcon /> : <FavoriteBorderIcon />}
-                </button>
+                {
+                    like
+                        ?
+                        <button
+                            className={styles.likeBtn}
+                            onClick={handleDislike}>
+                            <FavoriteIcon />
+                        </button>
+                        :
+                        <button
+                            className={styles.likeBtn}
+                            onClick={handleLike}>
+                            <FavoriteBorderIcon />
+                        </button>
+                }
             </div>
         </>
     );

@@ -16,8 +16,6 @@ function App() {
     setFilter(!filter);
   };
 
-  
-
   useEffect(()=> {
     dispatch(fetchData());
   }, []);
