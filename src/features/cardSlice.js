@@ -1,12 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 export const fetchData = createAsyncThunk(
-    'cards/fetchData',
+    'cartoons/fetchData',
     async () => {
         const response = await fetch('https://api.sampleapis.com/cartoons/cartoons2D');
         const data = await response.json();
         console.log(data);
-        return data.results;
+        return data;
     }
 );
 
@@ -14,7 +14,7 @@ export const cardSlice = createSlice({
     name: 'cartoons',
     initialState: {
         cartoons: [],
-        status: 'idle', 
+        status: null, 
     },
     reducers: {
         toggleLike: (state, action) => {
@@ -29,7 +29,7 @@ export const cardSlice = createSlice({
             state.cartoons = state.cartoons.filter(cartoon => cartoon.id !== action.payload);
         },
     },
-    extraReducers:  (builder) => {
+    extraReducers: (builder) => {
         builder
         .addCase(fetchData.pending, (state) => {
             state.status = 'loading';
@@ -38,8 +38,9 @@ export const cardSlice = createSlice({
         .addCase(fetchData.fulfilled, (state, action) => {
             state.status = 'resolved';
             state.cartoons = action.payload;
+            console.log(state.cartoons)
         })
-        .addMatcher(fetchData.rejected, (state, action) => {
+        .addMatcher(fetchData.rejected, (state) => {
             state.status ='error'
         })
     },

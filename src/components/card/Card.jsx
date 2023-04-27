@@ -4,21 +4,27 @@ import CloseIcon from '@mui/icons-material/Close';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { useDispatch, useSelector } from "react-redux";
-import { toggleLike } from "../../features/cardSlice";
+import { toggleLike, deleteCartoon } from "../../features/cardSlice";
 
 export default function Card(props) {
-    const { data } = props;
+    const { data, id } = props;
     const dispatch = useDispatch();
-    const cartoons = useSelector(state => state.cartoon);
     const [like, setLike] = useState(false);
     const handleLike = () => {
         setLike(!like);
-        dispatch(cartoons.toggleLike());
+        dispatch(toggleLike());
     }
+
+    const deleteCard = () => {
+        dispatch(deleteCartoon(id));
+    };
+
     return (
         <>
             <div className={styles.container}>
-                <button className={styles.closeBtn}>
+                <button
+                    className={styles.closeBtn}
+                    onClick={deleteCard}>
                     <CloseIcon />
                 </button>
                 <img
