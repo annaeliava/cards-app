@@ -16,6 +16,8 @@ function App() {
     setFilter(!filter);
   };
 
+  
+
   useEffect(()=> {
     dispatch(fetchData());
   }, []);
@@ -30,9 +32,9 @@ function App() {
           ?
             cartoons
               .filter(cartoon => cartoon.liked)
-              .map(cartoon => <Card key={cartoon.id} data={cartoon} />)
+              .map(cartoon => <Card key={cartoon.id} {...cartoon} />)
           :
-            cartoons.map(cartoon => <Card key={cartoon.id} data={cartoon} />)
+            cartoons.map(cartoon => <Card key={cartoon.id} {...cartoon} />)
           } 
         </div>
       </div>
