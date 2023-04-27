@@ -13,10 +13,12 @@ export default function Card(props) {
     const handleLike = () => {
         setLike(!like);
         dispatch(toggleLike());
+        console.log('check1')
     }
 
     const deleteCard = () => {
         dispatch(deleteCartoon(id));
+        console.log('check')
     };
 
     return (

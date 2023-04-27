@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from './Filter.module.scss';
 
 export default function Filter(props) {
-    const { handleFilter, btn } = props;
+    const { handleFilter, filter } = props;
 
     return (
         <>
-            {btn
+            {filter
                 ?
                 <button className={styles.button} onClick={() => handleFilter(false)}>
                     favorites
