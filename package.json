@@ -2,6 +2,7 @@
   "name": "cards-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://annaeliava.github.io/cards-app/",
   "dependencies": {
     "@babel/core": "^7.16.0",
     "@emotion/react": "^11.10.6",
