@@ -9,6 +9,11 @@ import { toggleLike, deleteCartoon } from "../../features/cardSlice";
 export default function Card({ id, ...props }) {
     const dispatch = useDispatch();
     const [like, setLike] = useState(false);
+    const [description, setDescription] = useState(false);
+
+    const handleShowDescription = () => {
+        setDescription(!description);
+    };
 
     const handleDislike = () => {
         setLike(false);
@@ -32,16 +37,23 @@ export default function Card({ id, ...props }) {
                     onClick={deleteCard}>
                     <CloseIcon />
                 </button>
-                <img
-                    src={props.image}
-                    alt={props.title}
-                    className={styles.img} />
-                <div className={styles.title}>{props.title}</div>
-                <div className={styles.year}>{props.year}</div>
-                <div className={styles.creator}>Creator: {props.creator}</div>
-                <div className={styles.rating}>Rating: {props.rating}</div>
-                <div className={styles.runtime_in_minutes}>{props.runtime_in_minutes} minutes</div>
-                <div className={styles.episodes}>Episodes: {props.episodes}</div>
+                {
+                    description ?
+                        <div className={styles.description} onClick={handleShowDescription}>{props.description}</div>
+                        :
+                        <>
+                            <img
+                                src={props.image}
+                                alt={props.title}
+                                className={styles.img}
+                                onClick={handleShowDescription} />
+                            <div className={styles.title}>{props.title}</div>
+                            <div className={styles.year}>{props.release_date}</div>
+                            <div className={styles.creator}>Director: {props.director}</div>
+                            <div className={styles.rating}>Producer: {props.producer}</div>
+                            <div className={styles.runtime_in_minutes}>Minutes: {props.running_time}</div>
+                        </>
+                }
                 {
                     like
                         ?

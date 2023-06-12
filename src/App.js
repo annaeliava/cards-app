@@ -23,7 +23,7 @@ function App() {
   return (
     <>
       <div className="container">
-        <div className="title">Cartoons</div>
+        <div className="title">Studio Ghibli</div>
         <Filter filter={filter} handleFilter={handleFilter} />
         <div className="mapContainer">
           { filter 
